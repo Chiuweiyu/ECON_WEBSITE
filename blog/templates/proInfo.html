@@ -1,0 +1,180 @@
+﻿{% load static %}
+<!DOCTYPE html>
+
+<html lang="zh-hant" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>2020台大經濟營</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        {% if title %}
+        <title>{{ title }} | 2020 台大經濟營</title>
+        {% endif %}
+    </head>
+    <body>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+        <nav class="navbar sticky-top navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="{% url 'blog_home' %}" style="font-family:微軟正黑體;font-size:20pt">台大經濟營</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {% if user.is_authenticated %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'game:game_home' %}" style="font-family:微軟正黑體;font-size:13pt">遊戲規則</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="font-family:微軟正黑體;font-size:13pt">參考數據</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:logout' %}" style="font-family:微軟正黑體;font-size:13pt">登出</a>
+                    </li>
+                </ul>
+                
+
+                {% else %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog_econInfo' %}" style="font-family:微軟正黑體;font-size:13pt">本系簡介</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" style="font-family:微軟正黑體;font-size:13pt" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            營隊介紹
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'blog_timeline' %}" style="font-family:微軟正黑體;font-size:13pt">時程安排</a>
+                            <a class="dropdown-item" href="{% url 'blog_lessonInfo' %}" style="font-family:微軟正黑體;font-size:13pt">課程簡介</a>
+                            <a class="dropdown-item" href="{% url 'blog_proInfo' %}" style="font-family:微軟正黑體;font-size:13pt">講師介紹</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog_download' %}" style="font-family:微軟正黑體;font-size:13pt">下載專區</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog_faq' %}" style="font-family:微軟正黑體;font-size:13pt">FAQ</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:login' %}" style="font-family:微軟正黑體;font-size:13pt">登入</a>
+                    </li>
+                </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <style>
+            .hide-in-phone {
+                display: none
+            }
+
+            @media only screen and (min-width:800px) {
+                .hide-in-phone {
+                    display: block;
+                }
+            }
+        </style>
+
+        <!--1-->
+        <div class="row" style="width:auto;height:auto;background-color:#5E86C1;margin-right:0%">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-auto"></div>
+            <div class="col-md-1.8 col-sm-0 col-0 hide-in-phone">
+                <br /><br />
+                <img class="rounded-circle article-img" src="{% static 'images/ShengKaiChang.jpg' %}" style="width:180px;height:180px">
+                <br /><br /><br />
+            </div>
+            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-11 col-xs-11">
+                <div class="article-metadata" style="padding-left:5%">
+                    <a style="font-size:22pt;font-family:微軟正黑體;color:lightblue;font-weight:200"><br />系主任/</a>
+                    <a style="font-size:18pt;font-family:微軟正黑體;color:white;" href="http://homepage.ntu.edu.tw/~schang/">張勝凱<br /></a>
+                    <procon style="line-height:32px">美國威斯康辛大學麥迪遜校區經濟學博士<br></procon>
+                    <procon style="line-height:32px">研究興趣：應用計量經濟學、貝氏統計學、勞動經濟學、資產評價模型<br></procon>
+                    <procon style="line-height:32px">教授課程：統計學暨實習、計量經濟學導論暨實習、經濟實證與預測</procon>
+                    <br /><br />
+                </div>
+            </div>
+        </div>
+
+        <!--2-->
+        <div class="row" style="width:auto;height:auto;background-color:white;margin-right:0%">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-auto"></div>
+            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-11 col-xs-11">
+                <div class="article-metadata" style="padding-left:5%">
+                    <a style="font-size:22pt;font-family:微軟正黑體;color:darkblue;font-weight:200"><br />社科院院長/</a>
+                    <a style="font-size:18pt;font-family:微軟正黑體;color:black;" href="http://homepage.ntu.edu.tw/~wangh/">王泓仁<br /></a>
+                    <procon style="line-height:32px">美國密西根大學經濟學博士<br></procon>
+                    <procon style="line-height:32px">研究興趣：效率與生產力模型、貨幣政策、總體實證<br></procon>
+                    <procon style="line-height:32px">教授課程：總體經濟學、財務經濟學</procon>
+                    <br /><br />
+                </div>
+            </div>
+            <div class="col-md-1.8 col-sm-0 col-0 hide-in-phone">
+                <br /><br />
+                <img class="rounded-circle article-img" src="{% static 'images/WangHungJen.jpg' %}" style="width:180px;height:180px">
+                <br /><br /><br />
+            </div>
+        </div>
+
+        <!--3-->
+        <div class="row" style="width:auto;height:auto;background-color:#5E86C1;margin-right:0%">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-auto"></div>
+            <div class="col-md-1.8 col-sm-0 col-0 hide-in-phone">
+                <br /><br />
+                <img class="rounded-circle article-img" src="{% static 'images/TaoyiWang.jpg' %}" style="width:180px;height:180px">
+                <br /><br /><br />
+            </div>
+            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-11 col-xs-11">
+                <div class="article-metadata" style="padding-left:5%">
+                    <a style="font-size:22pt;font-family:微軟正黑體;color:lightblue;font-weight:200"><br />教授/</a>
+                    <a style="font-size:18pt;font-family:微軟正黑體;color:white;" href="http://homepage.ntu.edu.tw/~josephw/">王道一<br /></a>
+                    <procon style="line-height:32px">美國加州大學洛杉磯分校經濟學博士<br /></procon>
+                    <procon style="line-height:32px">研究興趣：經濟理論、實驗經濟學、神經經濟學<br></procon>
+                    <procon style="line-height:32px">教授課程：經濟學原理與實習、實驗經濟學專題、個體經濟理論</procon>
+                    <br /><br /><br />
+                </div>
+            </div>
+        </div>
+
+        <!--4-->
+        <div class="row" style="width:auto;height:auto;background-color:white;margin-right:0%">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-auto"></div>
+            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-11 col-xs-11">
+                <div class="article-metadata" style="padding-left:5%">
+                    <a style="font-size:22pt;font-family:微軟正黑體;color:darkblue;font-weight:200"><br />教授/</a>
+                    <a style="font-size:18pt;font-family:微軟正黑體;color:black;" href="http://homepage.ntu.edu.tw/~tstsai/">蔡崇聖<br /></a>
+                    <procon style="line-height:32px">美國威斯康辛大學麥迪遜校區經濟學博士<br></procon>
+                    <procon style="line-height:32px">研究興趣：公共經濟、政治經濟、產業組織<br></procon>
+                    <procon style="line-height:32px">教授課程：個體經濟學、賽局與訊息</procon>
+                    <br /><br />
+                </div>
+            </div>
+            <div class="col-md-1.8 col-sm-0 col-0 hide-in-phone">
+                <br /><br />
+                <img class="rounded-circle article-img" src="{% static 'images/TsungShengTsai.jpg' %}" style="width:180px;height:180px">
+                <br /><br /><br />
+            </div>
+        </div>
+
+        <!--footer-->
+        {% include 'footer.html' %}
+    </body>
+</html>
+
+
+

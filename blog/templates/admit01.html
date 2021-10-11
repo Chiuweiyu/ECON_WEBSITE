@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <div style="margin-top:1%">        
+        <div class="media-body">
+            <div class="row">
+                <div class="col-lg-3.5 col-md-4">
+                    <img class="rounded-circle article-img" src="{% static 'images/announce4.png' %}" style="width:70px;height:70px">
+                    <announce>一階錄取名單</announce>
+                    <small class="text-muted">2020-05-22</small>
+                </div>
+                <div class="col-lg-8.5 col-md-8" style="margin-top:0.5%">
+                    <faq_content>
+                        本次經濟營的<a href="{% static 'admit01-1.pdf' %}" style="color:cornflowerblue;">正取名單</a>及<a href="{% static 'admit01-2.pdf' %}" style="color:cornflowerblue;">備取名單</a>已公布，我們會寄信給正取的120名同學，信中有營隊繳費資訊及需要大家填寫的保險資訊等重要訊息，請大家務必於5/28 17:00前繳費完畢並填寫信中附上的表單！
+                        很重要所以再講一次，5/28 17:00前請完成繳費並填寫信中附上的表單，否則視同放棄喔！<br>
+                        本次營隊報名人數超過七百人，非常感謝大家在全球疫情仍不穩定的情況下仍然踴躍地報名營隊，然而為了維護營隊品質，我們不得不限制營隊的參加人數，從大家的報名資料中進行審核，從中選出符合營隊期望且適合營隊內容的學員。<br>
+                        在報名資料中，我們看到新課綱推行下，學生的迷茫與困惑、對大學科系及生涯探索的渴望，還有大家對經濟學的興趣及想像，希望能透過營隊，得到對經濟學更深的認識及體悟，並且幫助自己認識不同學群、科系。<br>
+                        我們從中選出了的120名正取及64名備取同學，希望順利錄取的學員們能在經濟營有所收穫，不虛此行！<br>
+                        也希望沒有獲得錄取的同學並不因此感到氣餒，持續探索自己有興趣的領域。希望大家能保持對知識的渴求，以及積極進取的心態，繼續探索、學習！<br>
+                        【二階錄取名單】<br>
+                        在5/28一階繳費截止後，將會確認釋出名額，並於5/29公佈二階錄取名單<br>
+                        ＊一般生將由備取順序遞補<br>
+                        ＊清寒名額備取已寄信告知，若有釋出名額也將再行寄出通知<br>
+                    </faq_content>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

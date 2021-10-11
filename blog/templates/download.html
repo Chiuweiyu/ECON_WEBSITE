@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <style>
+        .hide-in-phone {
+            display: none
+        }
+
+        @media only screen and (min-width:800px) {
+            .hide-in-phone {
+                display: block;
+            }
+        }
+    </style>
+
+    <div class="row" style="padding-top: 2%;padding-left: 1%;background-color:rgb(255, 253, 241)">
+        <div class="col-md-3 col-sm-12" style="text-align: center;">
+            <div class="row hide-in-phone">
+                <img src="{% static 'images/notification.png' %}" style="height: 160px; width: 160px;">
+            </div>
+            <br>
+            <a href="{% static 'notice.pdf' %}" style="font-family: 微軟正黑體;font-size: 17pt;color: steelblue;">行前通知</a>
+            <br>
+        </div>
+        <div class="col-md-3 col-sm-12" style="text-align: center;">
+            <div class="row hide-in-phone">
+                <img src="{% static 'images/plane.png' %}" style="height: 160px; width: 160px;">
+            </div>
+            <br>
+            <a href="{% static 'leave.pdf' %}" style="font-family: 微軟正黑體;font-size: 17pt;color: steelblue;">請假單</a>
+            <br>
+        </div>
+        <div class="col-md-3 col-sm-12" style="text-align: center;">
+            <div class="row hide-in-phone">
+                <img src="{% static 'images/pay.png' %}" style="height: 160px; width: 160px;">
+            </div>
+            <br>
+            <a href="{% static 'refund02.pdf' %}" style="font-family: 微軟正黑體;font-size: 17pt;color: steelblue;">退費申請書</a>
+            <br>
+        </div>
+        <div class="col-md-3 col-sm-12" style="text-align: center;">
+            <div class="row hide-in-phone">
+                <img src="{% static 'images/application.png' %}" style="height: 160px; width: 160px;">
+            </div>
+            <br>
+            <a href="{% static 'recommendation.pdf' %}" style="font-family: 微軟正黑體;font-size: 17pt;color: steelblue;">師長推薦函</a>
+            <br>
+        </div>
+    </div>
+{% endblock %}

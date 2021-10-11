@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <div style="margin-top:1%">        
+        <div class="media-body">
+            <div class="row">
+                <div class="col-lg-3.5 col-md-4">
+                    <img class="rounded-circle article-img" src="{% static 'images/announce4.png' %}" style="width:70px;height:70px">
+                    <announce>二階錄取名單</announce>
+                    <small class="text-muted">2020-05-29</small>
+                </div>
+                <div class="col-lg-8.5 col-md-8" style="margin-top:0.5%">
+                    <faq_content>
+                        讓大家久等了！本次經濟營的<a href="{% static 'admit02-1.pdf' %}" style="color:cornflowerblue;">二階正取名單</a>及<a href="{% static 'admit02-2.pdf' %}" style="color:cornflowerblue;">一階正取確認名單</a>已公布<br>
+                        我們已寄信給二階錄取的同學，信中有營隊繳費資訊及需要大家填寫的保險資訊等重要訊息，請二階錄取的學員們於6/4 17:00前繳費完畢並填寫信中附上的表單！<br>
+                        很重要所以再講一次，6/4 17:00前請完成繳費並填寫信中附上的表單，否則視同放棄！<br>
+                        同樣提醒清寒名額的學員們，資料繳交與表單填寫期限為6/3 18:00之前喔！<br>
+                        【最終錄取名單】<br>
+                        在6/4二階繳費截止後，將會確認釋出名額，並於6/5公佈最終錄取名單<br>
+                        ＊一般生將由備取順序遞補<br>
+                    </faq_content>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<div style="margin:1% 3%">
+		{% for post in posts %}                
+			<article class="media content-section">
+				<div class="media-body">
+					<div class="row">
+						<div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12">
+							<img class="rounded-circle article-img" src="{% static 'images/announce4.png' %}" style="width:60px;height:60px">
+							<announce>{{ post.title }}</announce>
+							<small class="text-muted">{{ post.pub_date | date:"Y-m-d" }}</small>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12" style="margin:0.5% 4%">
+							<faq_content>{{ post.body | linebreaksbr }}</faq_content>
+						</div>
+					</div>
+					<br /><hr />
+				</div>
+			</article>
+			
+		{% endfor %}
+	</div>
+{% endblock %}

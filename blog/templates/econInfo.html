@@ -1,0 +1,281 @@
+﻿{% load static %}
+<!DOCTYPE html>
+
+<html lang="zh-hant" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>2020台大經濟營</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        {% if title %}
+        <title>{{ title }} | 2020 台大經濟營</title>
+        {% endif %}
+    </head>
+    <body>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <style>
+            .body {
+                min-width: 800px;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+        </style>
+
+        <!-- navbar -->
+        <nav class="navbar sticky-top navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="{% url 'blog_home' %}" style="font-family:微軟正黑體;font-size:20pt">台大經濟營</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {% if user.is_authenticated %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'game:game_home' %}" style="font-family:微軟正黑體;font-size:13pt">遊戲規則</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="font-family:微軟正黑體;font-size:13pt">參考數據</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:logout' %}" style="font-family:微軟正黑體;font-size:13pt">登出</a>
+                    </li>
+                </ul>
+
+
+                {% else %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog_econInfo' %}" style="font-family:微軟正黑體;font-size:13pt">本系簡介</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" style="font-family:微軟正黑體;font-size:13pt" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            營隊介紹
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'blog_timeline' %}" style="font-family:微軟正黑體;font-size:13pt">時程安排</a>
+                            <a class="dropdown-item" href="{% url 'blog_lessonInfo' %}" style="font-family:微軟正黑體;font-size:13pt">課程簡介</a>
+                            <a class="dropdown-item" href="{% url 'blog_proInfo' %}" style="font-family:微軟正黑體;font-size:13pt">講師介紹</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog_download' %}" style="font-family:微軟正黑體;font-size:13pt">下載專區</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog_faq' %}" style="font-family:微軟正黑體;font-size:13pt">FAQ</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:login' %}" style="font-family:微軟正黑體;font-size:13pt">登入</a>
+                    </li>
+                </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+        <!--1-->
+        <div class="row" style="width:auto;height:120px;background-color:rgb(236, 239, 241);margin-right:0px">
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
+            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-9 col-11">
+                <a style="font-size:28pt;font-family:微軟正黑體;color:darkblue;font-weight:300;"><br />經濟學是什麼？</a>
+            </div>
+        </div>
+        <div class="row" style="height:auto;background-color:rgb(236, 239, 241);margin-right:0px">
+            <!--<div class="col-xl-1 col-lg-1 col-md-1 col-sm-0 col-0"></div> -->
+            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-11 col-10" ">
+                <h5 style="font-family:微軟正黑體;font-size:16pt;line-height:24pt;font-weight:300;padding-left:15%">
+                    經濟學是社會科學，而社會科學與自然科學並無兩樣。唯一不同的是，自然科學研究自然現象，經濟學則研究社會現象。
+                </h5>
+            </div>
+        </div>
+        <div class="row" style="height:auto;background-color:rgb(236, 239, 241);margin-right:0px">
+            <div class="col-xl-7 col-lg-7 col-md-6 col-sm-4 col-2"></div>
+            <div class="col-xl-4 col-lg-4 col-md-5 col-sm-7 col-10">
+                <faq_content style="color:black;"><br />&ensp;--引自吳聰敏〈經濟學是甚麼？〉<br /><br /></faq_content>
+            </div>
+        </div>
+
+        <!--2-->
+        <div class="row" style="height:150px;background-color:#F5F5DC;margin-right:0px">
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
+            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-9 col-11">
+                <a style="font-size:28pt;font-family:微軟正黑體;color:darkblue;font-weight:300;"><br />課程介紹</a>
+            </div>
+        </div>
+        <div class="row" style="height:auto;background-color:#F5F5DC;padding-left:9%;margin-right:0px">
+            <div class="col-md-5 col-sm-10">
+                <bigtitle style="color:#996B1F;line-height:6px;font-size:22pt">必修課程</bigtitle>
+                <hr align="left" width="95%" style="background-color:lightgray;height:0.3pt">
+                <div class="row" style="padding-left:3%">
+                    <div class="col-6">
+                        <faq_content>
+                            經濟學原理與實習<br />微積分123/乙<br />
+                        </faq_content>
+                    </div>
+                    <div class="col-6">
+                        <faq_content>
+                            個體經濟學<br />總體經濟學<br />統計學與計量經濟學<br />
+                        </faq_content>
+                    </div>
+                </div>
+                <br /><br />
+            </div>
+
+            <div class="col-md-6 col-sm-10">
+                <bigtitle style="color:#996B1F;line-height:6px;font-size:22pt">選修課程</bigtitle>
+                <hr align="left" width="95%" style="background-color:lightgray;height:0.3pt">
+                <div class="col-12" style="padding-right:2%">
+                    <li style="list-style-type:circle;font-weight:500;font-family:微軟正黑體;font-size:16pt;">財務經濟領域：</li><br />
+                    <faq_content style="line-height:12px;">投資學、財務管理、財務經濟學、會計學等<br /><br /></faq_content>
+                    <li style="list-style-type:circle;font-weight:500;font-family:微軟正黑體;font-size:16pt;">數理經濟領域：</li><br />
+                    <faq_content style="line-height:12px;">高等微積分、線性代數、高等統計推論等<br /><br /></faq_content>
+                    <li style="list-style-type:circle;font-weight:500;font-family:微軟正黑體;font-size:16pt;">政策分析領域：</li><br />
+                    <faq_content style="line-height:12px;">財政學、貨幣銀行學、貿易理論、國際金融等<br /><br /></faq_content>
+                </div>
+                <br />
+            </div>
+
+            <div class="col-md-11 col-sm-10">
+                <bigtitle style="color:#996B1F;line-height:6px;font-size:22pt">課程特色</bigtitle>
+                <hr align="left" width="95%" style="background-color:lightgray;height:0.3pt">
+                <div class="col-12" style="padding-right:2%">
+                    <div class="row">
+                        <div class="col-md-4 col-10" style="text-align:center">
+                            <bigtitle style="font-weight:400;font-size:18pt;color:firebrick">內容紮實</bigtitle><br />&ensp;&ensp;
+                            <faq_content>多為學年課程，學得較深較廣<br /><br /></faq_content>
+                        </div>
+                        <div class="col-md-4 col-10" style="text-align:center">
+                            <bigtitle style="font-weight:400;font-size:18pt;color:firebrick">選課彈性</bigtitle><br />&ensp;&ensp;
+                            <faq_content>最低畢業學分，必修學分數少<br /><br /></faq_content>
+                        </div>
+                        <div class="col-md-4 col-10" style="text-align:center">
+                            <bigtitle style="font-weight:400;font-size:18pt;color:firebrick">師資優秀</bigtitle><br />&ensp;&ensp;
+                            <faq_content>學習經歷豐富，研究領域多元<br /><br /></faq_content>
+                        </div>
+                    </div>
+                </div>
+                <br /><br />
+            </div>
+        </div>
+
+        <!--3-->
+        <div class="row" style="width:auto;height:120px;background-color:rgb(236, 239, 241);margin-right:0px">
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
+            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-9 col-11">
+                <a style="font-size:28pt;font-family:微軟正黑體;color:darkblue;font-weight:300;"><br />入學管道</a>
+            </div>
+        </div>
+
+
+        <div style="padding:2% 10%;width:auto;height:auto;background-color:rgb(236, 239, 241);margin-right:0px">
+            <div class="row">
+                <div class="col-0.5"></div>
+                <div class="col-lg-4 col-md-10">
+                    <bigtitle style="color:#996B1F;font-size:20pt">繁星計畫(11名)</bigtitle>
+                    <hr align="center" width="100%" style="background-color:lightgray;height:0.3pt">
+                    <procon>
+                        學測門檻：英社前標、數自頂標<br />分發比序：在校成績百分比、學測總級分、在校數學百分比...
+                    </procon>
+                    <br /><br />
+                </div>
+
+                <div class="col-0.5"></div>
+                <div class="col-lg-4 col-md-10">
+                    <bigtitle style="color:#996B1F;font-size:20pt">學測申請(52名)</bigtitle>
+                    <hr align="center" width="100%" style="background-color:lightgray;height:0.3pt">
+                    <procon>
+                        參採科目：英文、數學(數A)、自然、社會<br>一階：社會+自然6倍、數學(數A)3倍<br />二階：學測總級40%、備審資料30%、面試30%
+                    </procon>
+                    <br /><br />
+                </div>
+
+                <div class="col-0.5"></div>
+                <div class="col-lg-4 col-md-10">
+                    <bigtitle style="color:#996B1F;font-size:20pt">指考分發(約60名)</bigtitle>
+                    <hr align="center" width="100%" style="background-color:lightgray;height:0.3pt">
+                    <procon>
+                        學測門檻：無<br />指考加權：國文 x 1.0、英文 x 1.5、數乙 x 2.0
+                    </procon>
+                    <br /><br />
+                </div>
+
+            </div>
+        </div>
+
+        <!--4-->
+
+        <style>
+            .hide-in-phone {
+                display: none
+            }
+            #mobileshow {
+                display: none;
+            }
+            @media only screen and (min-width:768px) {
+                .hide-in-phone {
+                    display: block;
+                }
+            }
+            @media screen and (max-width: 768px) {
+                #mobileshow {
+                    display: block;
+                }
+            }
+        </style>
+
+        <div class="row" style="height:130px;background-color:#F5F5DC;margin-right:0px">
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
+            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-9 col-11">
+                <a style="font-size:28pt;font-family:微軟正黑體;color:darkblue;font-weight:300;"><br />其他學習資源</a>
+            </div>
+        </div>
+
+        <div style="padding:0% 10%;width:auto;height:auto;background-color:#F5F5DC;margin-right:0px">
+            <div class="row">
+                <div class="col-0.5"></div>
+                <div class="col-md-3 col-sm-10">
+                    <a class="hide-in-phone" href="https://m.facebook.com/TalkEcon/" style="font-family:微軟正黑體;font-size:17pt;font-weight:300;color:firebrick;text-align:center">白經濟<br />TalkEcon</a>
+                    <a id="mobileshow" href="https://m.facebook.com/TalkEcon/" style="font-family:微軟正黑體;font-size:16pt;font-weight:300;color:firebrick;text-decoration:underline;padding-left:4%">白經濟TalkEcon</a>
+                    <img src="{% static 'images/qr1.png' %}" style="height:150px;width:150px;margin:auto" class="hide-in-phone" />
+                    <br />
+
+                </div>
+                <div class="col-0.5"></div>
+                <div class="col-md-5 col-sm-10">
+                    <a class="hide-in-phone" href="http://ocw.aca.ntu.edu.tw/ntu-ocw/ocw/cou/102S116" style="font-family:微軟正黑體;font-size:17pt;font-weight:300;color:firebrick;text-align:center">台大開放式課程<br />經濟學原理</a>
+                    <a id="mobileshow" href="http://ocw.aca.ntu.edu.tw/ntu-ocw/ocw/cou/102S116" style="font-family:微軟正黑體;font-size:16pt;font-weight:300;color:firebrick;text-decoration:underline;padding-left:4%">台大開放式課程-經濟學原理</a>
+                    <img src="{% static 'images/qr2.png' %}" style="height:150px;width:150px;margin:auto" class="hide-in-phone" />
+                    <br />
+
+                </div>
+                <div class="col-0.5"></div>
+                <div class="col-md-3 col-sm-10">
+                    <a class="hide-in-phone" href="https://m.facebook.com/NTUECONSA/" style="font-family:微軟正黑體;font-size:17pt;font-weight:300;color:firebrick;text-align:center">台大經濟系<br />系學會</a>
+                    <a id="mobileshow" href="https://m.facebook.com/NTUECONSA/" style="font-family:微軟正黑體;font-size:16pt;font-weight:300;color:firebrick;text-decoration:underline;padding-left:4%">台大經濟系系學會</a>
+                    
+                    <img src="{% static 'images/qr3.png' %}" style="height:150px;width:150px;margin:auto" class="hide-in-phone" />
+                    <br /><br />
+                </div>
+            </div>            
+            <br /><br />
+        </div>
+
+        <!--footer-->
+        {% include 'footer.html' %}
+    </body>
+</html>

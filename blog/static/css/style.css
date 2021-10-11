@@ -1,0 +1,55 @@
+﻿bigtitle {
+    font-family: 微軟正黑體;
+    font-size: 24pt;
+    font-weight: 300;
+    color: #00477D;
+}
+
+
+engcon {
+    font-family: Cambria;
+    font-size: 13pt;
+}
+
+faq_question {
+    font-family:微軟正黑體;
+    font-size:16pt;
+    font-weight:500;
+    color:black;
+    height:50px;
+    line-height:50px;
+}
+
+faq_content{
+    font-family:微軟正黑體;
+    font-size:13pt;
+    font-weight:300;
+    color:black;
+}
+
+quota {
+    font-family: Microsoft JhengHei;
+    font-size: 15pt;
+    color: black;
+    line-height: 20px;
+    font-weight: 300;
+}
+
+procon{
+    font-family:微軟正黑體;
+    font-size:14pt;
+    font-weight:300;
+    color: black;
+    line-height:30px;
+}
+
+announce {
+    font-family: Microsoft JhengHei;
+    font-size: 20pt;
+    color:cornflowerblue;
+    line-height:12px;
+}
+
+.divcss5 {
+    overflow: hidden;
+}

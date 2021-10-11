@@ -1,0 +1,237 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="zh-hant" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>2020台大經濟營</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        {% if title %}
+        <title>{{ title }} | 2020 台大經濟營</title>
+        {% endif %}
+    </head>
+    <body>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <style>
+            .body {
+                min-width: 800px;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+
+            .hide-in-phone {
+                display: none
+            }
+
+            @media only screen and (min-width:800px) {
+                .hide-in-phone {
+                    display: block;
+                }
+            }
+        </style>
+
+        <nav class="navbar sticky-top navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="{% url 'blog_home' %}" style="font-family:微軟正黑體;font-size:20pt">台大經濟營</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {% if user.is_authenticated %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'game:game_home' %}" style="font-family:微軟正黑體;font-size:13pt">遊戲規則</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="font-family:微軟正黑體;font-size:13pt">參考數據</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:logout' %}" style="font-family:微軟正黑體;font-size:13pt">登出</a>
+                    </li>
+                </ul>
+                
+
+                {% else %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog_econInfo' %}" style="font-family:微軟正黑體;font-size:13pt">本系簡介</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" style="font-family:微軟正黑體;font-size:13pt" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            營隊介紹
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'blog_timeline' %}" style="font-family:微軟正黑體;font-size:13pt">時程安排</a>
+                            <a class="dropdown-item" href="{% url 'blog_lessonInfo' %}" style="font-family:微軟正黑體;font-size:13pt">課程簡介</a>
+                            <a class="dropdown-item" href="{% url 'blog_proInfo' %}" style="font-family:微軟正黑體;font-size:13pt">講師介紹</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog_download' %}" style="font-family:微軟正黑體;font-size:13pt">下載專區</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog_faq' %}" style="font-family:微軟正黑體;font-size:13pt">FAQ</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:login' %}" style="font-family:微軟正黑體;font-size:13pt">登入</a>
+                    </li>
+                </ul>
+                {% endif %}
+            </div>
+        </nav>
+ 
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <style>
+            .hide-in-phone {
+                display: none
+            }
+            #mobileshow {
+                display: none;
+            }
+            @media only screen and (min-width:768px) {
+                .hide-in-phone {
+                    display: block;
+                }
+            }
+            @media screen and (max-width: 768px) {
+                #mobileshow {
+                    display: block;
+                }
+            }
+        </style>
+
+        <!--1-->
+        <div class="row" style="width:auto;height:auto;background-color:rgb(236, 239, 241);margin-right:0px;">
+            <div class="col-lg-3 col-md-4 hide-in-phone" style="padding-top: 8%;padding-left: 12%;">
+                <img class="article-img" src="{% static 'images/universe.png' %}" style="width:200px;height:200px">
+            </div>
+            <div class="col-md-8 col-sm-12" style="padding-left: 8%;padding-right: 3%;">
+                <a style="font-size:28pt;font-family:微軟正黑體;color: darkblue;font-weight:300;"><br />營包遊戲</a>
+                <br>
+                <div class="row" style="padding-left: 3%;padding-top: 1%;">
+                    <procon style="line-height: 28px;">
+                        在距離太陽系2020光年的彼岸，存在著自成系統的十顆星球，他們隨著氣候、地形的不同，有各自盛產的礦產。他們透過貿易交換、提升開採技術，找出最佳策略、更快速地建造自己的星球。<br>
+                        然而，宇宙中危機四伏，各種天災隨時來襲，導致即時的礦產匯率浮動及研究中心損害。對各星球而言，如何有技巧的貿易、開採、研究、整修，是刻不容緩的議題。<br>
+                        在這次五天四夜的營隊中，和夥伴們運用所學，擬定策略，一同為所屬星球成功探索神秘且奧妙的宇宙而努力吧！<br><br><br>
+                    </procon>
+                </div>
+            </div>
+        </div>
+        
+
+        <!--2-->
+        <div class="row" style="height:auto;background-color:#F5F5DC;margin-right:0px">
+            <div class="col-md-8 col-sm-12" style="padding-left: 12%;">
+                <a style="font-size:28pt;font-family:微軟正黑體;color: darkblue;font-weight:300;"><br />賽局遊戲</a>
+                <br>
+                <div class="row" style="padding-left: 3%;padding-top: 1%;">
+                    <procon style="line-height: 28px;">
+                        那時正值1970年代，一座監獄，兩間獨立的牢房，兩名共同犯案的搶匪將要面對險峻的質問，被分開審問的兩人皆有「認罪」與「不認罪」兩種選擇。<br>
+                        此時，嫌犯A心想：「要是我認罪，會不會影響我的同伴呢？可是不認罪我就有可能脫身...」而嫌犯B也默默思考著：「要是嫌犯A不認罪，而我認罪了，我就可以離開這裡了...」<br>
+                        自身做出抉擇之際，亦受另一方所牽制；除了考慮自身的利益，同時也必須揣測對方的心思。這正是所謂的「賽局理論」。<br>
+                        在本次營隊中，我們將會設計各種賽局活動，讓小隊員在活動中互相討論、競爭，最終找出遊戲的最佳策略！<br><br><br>
+                    </procon>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 hide-in-phone" style="padding-top: 11%;padding-left: 5%;">
+                <img class="article-img" src="{% static 'images/chess02.png' %}" style="width:200px;height:200px">
+            </div>
+        </div>
+
+        <!--3-->
+        <div class="row" style="width:auto;height:auto;background-color:rgb(236, 239, 241);margin-right:0px;">
+            <div class="col-lg-3 col-md-4 hide-in-phone" style="padding-top: 5%;padding-left: 12%;">
+                <img class="article-img" src="{% static 'images/vpon.png' %}" style="width:200px;height:200px">
+            </div>
+            <div class="col-md-8 col-sm-12" style="padding-left: 8%;padding-right: 3%;">
+                <a style="font-size:28pt;font-family:微軟正黑體;color: darkblue;font-weight:300;"><br />企業講座-
+                    <a href="https://www.vpon.com/zh-hant/" style="font-size:26pt;font-family:微軟正黑體;color: darkblue;font-weight:200;">Vpon威朋</a>
+                </a>
+                <br>
+                <div class="row" style="padding-left: 3%;padding-top: 1%;">
+                    <procon style="line-height: 28px;">
+                        Vpon威朋大數據集團作為亞洲領先的大數據公司，擁有先進的大數據分析技術，以亞洲最豐富的行動數據，為客戶提供最有效的數據核心解決方案。
+                        憑藉每月可觸及的9億行動裝置，並集合覆蓋亞太地區優質的媒體資源，我們為客戶提供以數據為核心的業務和行銷解決方案，包括數據分析服務、品牌推廣、跨境行銷、成效優化等，協助客戶提高品牌認知度和創造交易。
+                        <br><br><br>
+                    </procon>
+                </div>
+            </div>
+        </div>
+        
+        <!--4-->
+        <div class="row" style="height:auto;background-color:#F5F5DC;margin-right:0px">
+            <div class="col-md-8 col-sm-12" style="padding-left: 12%;">
+                <a style="font-size:28pt;font-family:微軟正黑體;color: darkblue;font-weight:300;"><br />企業參訪-
+                    <a href="https://www.masterlink.com.tw/" style="font-size:26pt;font-family:微軟正黑體;color: darkblue;font-weight:200;">元富證券</a>
+                </a>
+                <br>
+                <div class="row" style="padding-left: 3%;padding-top: 1%;">
+                    <procon style="line-height: 28px;">
+                        元富證券提供證券經紀、承銷與自營三大業務，其他業務包含債券、期貨自營、新金融商品、股務代理等。隨著金融科技趨勢發展，元富證券不斷精進發展智能選股系統平台，例如：智能雲端條件單及智能選股App，結合元富投顧投資觀點，協助投資人以輕鬆、快速、準確的方式完成投資理財與掌握股市。<br>
+                        此外，元富證券亦積極落實企業社會責任，以「教育推廣」、「生技醫療」、「環境保護」及「社會關懷」四大領域為主軸，將CSR行動與企業營運做連結，整合企業乃至集團資源，協助社會朝正向力量前進。<br><br><br>
+                    </procon>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 hide-in-phone" style="padding-top: 7%;padding-left: 5%;">
+                <img class="article-img" src="{% static 'images/masterlink.png' %}" style="width:210px;height:210px">
+            </div>
+        </div>
+
+        <!--5-->
+        <div class="row" style="width:auto;height:auto;background-color:rgb(236, 239, 241);margin-right:0px;">
+            <div class="col-lg-3 col-md-4 hide-in-phone" style="padding-top: 8%;padding-left: 12%;">
+                <img class="article-img" src="{% static 'images/microsoft.png' %}" style="width:220px;height:220px">
+            </div>
+            <div class="col-md-8 col-sm-12" style="padding-left: 8%;padding-right: 3%;">
+                <a style="font-size:28pt;font-family:微軟正黑體;color: darkblue;font-weight:300;"><br />企業參訪-
+                    <a href="https://www.microsoft.com/zh-tw" style="font-size:26pt;font-family:微軟正黑體;color: darkblue;font-weight:200;">Microsoft微軟</a>
+                </a>
+                <br>
+                <div class="row" style="padding-left: 3%;padding-top: 1%;">
+                    <procon style="line-height: 28px;">
+                        微軟是全球科技產業的領航者，提供全球領先的軟體、服務、設備和解決方案。最為著名和暢銷的產品為Microsoft Windows作業系統和Microsoft Office辦公室軟體，以及Xbox的遊戲業務。<br>
+                        四十多年來，微軟專注於技術創新與變革，透過卓越的軟體、設備和服務，能夠幫助用戶提昇生活和工作生產力，讓數億的使用者真正受益於科技。微軟公司總部位於美國華盛頓州 Redmond，在全世界超過 190 個國家和地區設有分公司或是分支機構。<br>
+                        台灣微軟成立於 1989 年，身為政府、學校與企業最值得信賴的夥伴，始終致力於幫助台灣提升創新力、競爭力以及促進經濟繁榮，共同來亮點台灣！
+                        <br><br><br>
+                    </procon>
+                </div>
+            </div>
+        </div>
+
+        <!--6-->
+        <div class="row" style="height:auto;background-color:#F5F5DC;margin-right:0px">
+            <div class="col-md-8 col-sm-12" style="padding-left: 12%;">
+                <a style="font-size:28pt;font-family:微軟正黑體;color: darkblue;font-weight:300;"><br />企業講座-
+                    <a href="https://www2.deloitte.com/tw/tc.html" style="font-size:26pt;font-family:微軟正黑體;color: darkblue;font-weight:200;">勤業眾信</a>
+                </a>
+                <br>
+                <div class="row" style="padding-left: 3%;padding-top: 1%;">
+                    <procon style="line-height: 28px;">
+                        Deloitte身為四大會計事務所之一，以卓越的客戶服務、優秀的人才、完善的訓練及嚴謹的查核為各行各業的上市及非上市提供審計、稅務、風險諮詢、財務顧問、管理顧問及其他相關服務，客戶也能透過Deloitte海內外的資源整合，得到全方位整合的專業服務。<br>
+                        除此之外，Deloitte亦提供各類型商業議題之解決方案，並協助企業辨識風險，幫助其做好妥善的風險管理，使企業永續經營的理想得以堅定不移，間接的穩定了社會經濟環境。<br><br><br>
+                    </procon>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 hide-in-phone" style="padding-top: 7%;padding-left: 5%;">
+                <img class="article-img" src="{% static 'images/deloitte.png' %}" style="width:200px;height:200px">
+            </div>
+        </div>
+
+        <!--footer-->
+        {% include 'footer.html' %}
+    </body>
+</html>
